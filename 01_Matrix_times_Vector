@@ -1,0 +1,44 @@
+Matrix times Vector (easy)
+Write a Python function that takes the dot product of a matrix and a vector. return -1 if the matrix could not be dotted with the vector
+Example
+Example:
+        input: a = [[1,2],[2,4]], b = [1,2]
+        output:[5, 10] 
+        reasoning: 1*1 + 2*2 = 5;
+                   1*2+ 2*4 = 10
+-------------------------------------------------
+function def:
+--------------
+def matrix_dot_vector(a:list[list[int|float]],b:list[int|float])-> list[int|float]:
+	return c
+
+-----------------------------------------------------
+Solution:
+---------
+
+def matrix_dot_vector(a:list[list[int|float]],b:list[int|float])-> list[int|float]:
+	# Check for shape mismatch
+	if len(a[0]) != len(b):
+		# print("Shape mismatch")
+		return -1
+	vals = [] # list to store the answers
+	# print("Checking type of a, ", type(a))
+	for i in a: # type of a is a list
+		# print(type(i))
+		row_sum = 0
+		for j in range(len(i)):
+			row_sum += (i[j] * b[j])
+		vals.append(row_sum)
+						
+	return vals
+
+
+
+-------------
+Learnings:
+-----------
+- matrix multiplication rules
+- Any one dimensional vector is a column vector
+- hold or row_sum method for matrix multiplication
+- for i in a: if looping through a list of list, the output of this for would be a list. 
+- 
