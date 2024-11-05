@@ -1,0 +1,42 @@
+Problem Statement:
+-------------------
+Write a Python function that reshapes a given matrix into a specified shape.
+Example
+Example:
+        input: a = [[1,2,3,4],[5,6,7,8]], new_shape = (4, 2)
+        output: [[1, 2], [3, 4], [5, 6], [7, 8]]
+        reasoning: The given matrix is reshaped from 2x4 to 4x2.
+
+
+Solution:
+---------
+import numpy as np
+
+def reshape_matrix(a: list[list[int|float]], new_shape: tuple[int, int]) -> list[list[int|float]]:
+	# Approach 1
+	
+	#Write your code here and return a python list after reshaping by using numpy's tolist() method
+	# reshaped_matrix = np.array(a).reshape(new_shape).tolist()
+	# return reshaped_matrix
+
+	# Approach 2
+	# Step 1 : Flatten the original matrix
+	flattened = [element for row in a for element in row]
+	# print(flattened)
+	
+	reshaped_matrix = []
+	rows,cols = new_shape
+	
+	# looping through the flattened list with i indicating the rows
+	for i in range(rows):
+		reshaped_matrix.append(flattened[i*cols : (i + 1) * cols])
+
+	return reshaped_matrix
+
+
+Learnings:
+-----------
+- Approach #1 uses reshape which is a numpy method, hence input is converted to numpy
+- Apprahch #2 works with flattening
+- Flattening can be done by just iterating through each row and then each element in the row
+- Once flattened, the list can then be iterated again by slicing to exact lengths needed (cols length)

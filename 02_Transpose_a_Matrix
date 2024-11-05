@@ -1,0 +1,35 @@
+Problem Statement: 
+--------------------
+Write a Python function that computes the transpose of a given matrix.
+Example
+Example:
+        input: a = [[1,2,3],[4,5,6]]
+        output: [[1,4],[2,5],[3,6]]
+        reasoning: The transpose of a matrix is obtained by flipping rows
+
+
+Solution:
+----------
+def transpose_matrix(a: list[list[int|float]]) -> list[list[int|float]]:
+	b  = [[0] * len(a) for _ in range(len(a[0]))]
+	# print(b)
+	
+	# Approach 1
+	for i in range(len(a)):
+		for j in range(len(a[0])):
+			b[j][i] = a[i][j]
+	return b
+
+	# Approach 2
+	return [list(i) for i in zip(*a)]
+
+
+
+Learnings:
+----------
+- Transpose involves flipping the indices
+- *a is used to unpack the matrix
+- zip(*a) is an efficient way to transpose the matrix
+- if we do the transposing through nested loops, we would have to create list b with approapriate size
+
+

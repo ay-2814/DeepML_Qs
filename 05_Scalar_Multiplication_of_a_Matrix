@@ -1,0 +1,26 @@
+Problem Statement:
+------------------
+Write a Python function that multiplies a matrix by a scalar and returns the result.
+Example
+Example:
+        input: matrix = [[1, 2], [3, 4]], scalar = 2
+        output: [[2, 4], [6, 8]]
+        reasoning: Each element of the matrix is multiplied by the scalar.
+
+
+Solution:
+----------
+def scalar_multiply(matrix: list[list[int|float]], scalar: int|float) -> list[list[int|float]]:
+	# result = matrix * scalar # this just replicates or clones the list by the quantity of the scalar
+	
+	# Let's use list comprehension instead
+	return [element*scalar for row in matrix for element in row]
+	
+	return result
+
+
+Learnings:
+----------
+- matrix * scalar just replicates or clones the list by the quantity of the scalar
+- [element*scalar for element in row for row in matrix] IS WRONG, because row is being referenced before it is defined
+
