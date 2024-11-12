@@ -1,0 +1,32 @@
+Problem Statement:
+-------------------
+Calculate 2x2 Matrix Inverse (medium)
+✔
+Write a Python function that calculates the inverse of a 2x2 matrix. Return 'None' if the matrix is not invertible.
+Example
+Example:
+        input: matrix = [[4, 7], [2, 6]]
+        output: [[0.6, -0.7], [-0.2, 0.4]]
+        reasoning: The inverse of a 2x2 matrix [a, b], [c, d] is given by (
+
+
+Solution:
+----------
+def inverse_2x2(matrix: list[list[float]]) -> list[list[float]]:
+	a, b, c, d = matrix[0][0], matrix[0][1], matrix[1][0], matrix[1][1]
+	
+	determinant = (a*d) - (b*c)
+	
+	if determinant == 0:
+		return None
+	
+	inverse = [[d/determinant, -b/determinant],[-c/determinant, a/determinant]]
+	
+	
+	return inverse
+
+
+Learnings:
+----------
+- Hardcoded solution for finding inverse of a 2*2 matrix
+

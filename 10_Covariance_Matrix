@@ -1,0 +1,43 @@
+Problem Statement:
+------------------
+Write a Python function that calculates the covariance matrix from a list of vectors. Assume that the input list represents a dataset where each vector is a feature, and vectors are of equal length.
+Example
+Example:
+        input: vectors = [[1, 2, 3], [4, 5, 6]]
+        output: [[1.0, 1.0], [1.0, 1.0]]
+        reasoning: The dataset has two features with three observations each.
+The covariance between each pair of features (including covariance with itself) is calculated and returned as a 2x2 matrix.
+
+Solution: 
+---------
+def calculate_covariance_matrix(vectors: list[list[float]]) -> list[list[float]]:
+	# each row vector assumed to be distinct feature
+	n_features = len(vectors)
+	# number of elements in a row will be number of observations
+	n_observations = len(vectors[0])
+	
+	# Construct the symmetric covariance metric
+	covariance_matrix = [[0 for _ in range(n_features)] for _ in range(n_features)]
+	
+	# Calculate means
+	means = [sum(feature)/n_observations for feature in vectors]
+	# print(means)
+	
+	# looping to calculate all the covariance values
+	
+	for i in range(n_features):
+		for j in range(i, n_features):
+			covariance = sum((vectors[i][k] - means[i]) * (vectors[j][k] - means[j]) for k in range(n_observations))/(n_observations - 1)
+			covariance_matrix[i][j] = covariance_matrix[j][i] = covariance
+			
+	return covariance_matrix
+
+
+Learnings:
+----------
+- Covariance matrix is symmetric and dimensions are equal to the number of features 
+- Covariance of a metric with itself is its variance
+- First loop goes runs till the number of features
+- j loop starts from i and goes upto number of features
+- k loop runs for number of observations
+
