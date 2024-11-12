@@ -33,6 +33,23 @@ def matrix_dot_vector(a:list[list[int|float]],b:list[int|float])-> list[int|floa
 	return vals
 
 
+Solution 2: same approach, slight change in looping:
+-----------------------------------------------------
+def matrix_dot_vector(a:list[list[int|float]],b:list[int|float])-> list[int|float]:
+	
+	# Check compatibility for dot product:
+	if len(a[0]) != len(b):
+		return -1
+	c = []
+	
+	for i in range(len(a)):
+		row_sum = 0
+		for j in range(len(b)):
+			row_sum += a[i][j] * b[j]
+		c.append(row_sum)
+	
+	return c
+
 
 -------------
 Learnings:
