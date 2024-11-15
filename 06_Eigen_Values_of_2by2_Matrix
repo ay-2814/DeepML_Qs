@@ -31,7 +31,27 @@ def calculate_eigenvalues(matrix: list[list[float|int]]) -> list[float]:
 	return eigenvalues
 
 
+Try 2, 12th Nov, more comments:
+-------------------------------
+def calculate_eigenvalues(matrix: list[list[float|int]]) -> list[float]:
+	a, b, c, d = matrix[0][0], matrix[0][1], matrix[1][0], matrix[1][1]
+	tr = a + d
+	determinant = (a*d) - (b*c)
+
+	# Checking tr and determinant by printing
+	# print(tr, determinant) 
+	
+	# Eqn is : lambda^2 - tr(A) + det(A)
+	discriminant = ((tr**2) - 4 * 1 * determinant)
+	# print(discriminant)
+	# (-b + sqrt(b2-4ac))/2a
+	eigVal1 = (tr + (discriminant**0.5))/(2*1)
+	eigVal2 = (tr - (discriminant**0.5))/(2*1)
+	return [eigVal1, eigVal2]
+
 Learnings:
 ----------
 - Eigen value calculations, for  2*2 matrix
 - trace, determinant
+- trace = sum of diagnoal values
+- determinant for 2*2 = ad-bc
